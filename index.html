@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Placement Prep Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🚀 Placement Prep Tracker</h1>
+    <p>Master your DSA, Core CS, System Design, and Aptitude in one place.</p>
+    <div class="stats-card" id="statsContainer">
+      <div class="stat-box"><span id="statTotal">0</span><small>Total</small></div>
+      <div class="stat-box todo"><span id="statTodo">0</span><small>To Do</small></div>
+      <div class="stat-box learning"><span id="statLearning">0</span><small>Learning</small></div>
+      <div class="stat-box revised"><span id="statRevised">0</span><small>Revised</small></div>
+    </div>
+  </header>
+
+
+  <section class="card form-card">
+    <h2>Add New Topic</h2>
+    <form id="topicForm">
+      <div class="form-group">
+        <label for="category">Category / Subject</label>
+        <input type="text" id="category" list="categoryList" placeholder="e.g. DSA, DBMS, OS, Aptitude" required>
+        <datalist id="categoryList"></datalist>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Topic / Question Name</label>
+        <input type="text" id="title" placeholder="e.g. Sliding Window or Normalization" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="todo">To Do</option>
+            <option value="learning">Learning</option>
+            <option value="revised">Revised</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Notes / Resource Link</label>
+        <textarea id="notes" placeholder="Paste LeetCode link, documentation, or key formulas..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">Add to Tracker</button>
+    </form>
+  </section>
+
+  <!-- Search & Filter Dashboard Section -->
+  <section class="dashboard">
+    <div class="controls-bar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search topics..." oninput="handleSearch()">
+      </div>
+      <div class="status-filter-dropdown">
+        <select id="statusFilter" onchange="handleStatusFilter()">
+          <option value="">All Statuses</option>
+          <option value="todo">To Do</option>
+          <option value="learning">Learning</option>
+          <option value="revised">Revised</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <label>Filter by Category:</label>
+      <div id="categoryFilters" class="pill-container"></div>
+    </div>
+
+    <div class="tracker-list" id="topicsContainer"></div>
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
